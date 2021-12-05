@@ -1,0 +1,20 @@
+void setup() {
+  Serial.begin(115200);
+  pinMode(10,INPUT);
+}
+
+void loop() {
+  int val,duracao;
+  float permicr,perseg,freq,bpm;
+  val=digitalRead(10);
+    
+  if(val==HIGH){
+    permicr = pulseIn(10,LOW);
+    perseg = permicr / 1000000;
+    freq = 1 / perseg;
+    bpm = freq*60;
+    Serial.println(bpm);
+  }
+  
+  delay(20);  
+}
